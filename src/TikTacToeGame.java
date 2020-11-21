@@ -4,7 +4,7 @@ public class TikTacToeGame {
 	static char [] Board = new char[10];
 	
 	public static void main(String[] args) {
-		board();	
+		showBoard();	
 	}
 	public static char chooseMove() {
 		Scanner sc1 = new Scanner(System.in);
@@ -13,7 +13,7 @@ public class TikTacToeGame {
 		char mark = mark1.charAt(0);
 		return mark;
 	}
-	public static void board() {
+	public static void showBoard() {
 		System.out.println(" Type index to avail position ");
 		System.out.println(" 1-(0,0) | 2-(0,1) | 3-(0,2) \n 4-(1,0) | 5-(1,1) | 6-(1,2) \n 7-(2,0) | 8-(2,1) | 9-(2,2)");
 	}
