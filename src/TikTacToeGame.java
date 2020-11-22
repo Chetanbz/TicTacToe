@@ -7,9 +7,9 @@ public class TikTacToeGame {
 	 
 	
 	public static void main(String[] args) {
+		Board[5] = "X".charAt(0);  /// Assume this is old history
 		TikTacToeGame Game = new TikTacToeGame();
 		Game.chooseMark();
-		//System.out.println(userMark +" " + computerMark);
 		System.out.println(Game.showBoard());
 		Game.userMove(userMark);
 		System.out.println(Game.showBoard());
@@ -41,10 +41,15 @@ public class TikTacToeGame {
 
 	public void userMove(char playerMark) {
 		Scanner sc1 = new Scanner(System.in);
-		System.out.println("Choose number to place Mark");
-		int moveNumber = sc1.nextInt();
-		Board[moveNumber] = playerMark;
-		
+		while(true) {
+			System.out.println("Choose number to place Mark");
+			int moveNumber = sc1.nextInt(); ///which place user wants to put his marks
+			String position = String.valueOf(Board[moveNumber]); 
+			if (!(position.equals("X") || position.equals("O"))) {  // check for empty space & loop breaks
+				Board[moveNumber] = playerMark;
+				break;
+			}
+		}
 	}
 
 
