@@ -11,6 +11,8 @@ public class TikTacToeGame {
 		Game.chooseMark();
 		//System.out.println(userMark +" " + computerMark);
 		System.out.println(Game.showBoard());
+		Game.userMove(userMark);
+		System.out.println(Game.showBoard());
 	}
 	
 	public  void chooseMark() {
@@ -33,10 +35,17 @@ public class TikTacToeGame {
 		}
 	}
 	public String showBoard() {
-	      return  Board[1] + " | " + Board[2] + " | " + Board[3] +"\n" +  Board[4] + " | " + Board[5] + " | " + Board[6] + "\n" +  Board[4] + " | " + Board[5] + " | " + Board[6];
+		System.out.println("Current Board Position is ");
+	      return  Board[1] + " | " + Board[2] + " | " + Board[3] +"\n" +  Board[4] + " | " + Board[5] + " | " + Board[6] + "\n" +  Board[7] + " | " + Board[8] + " | " + Board[9];
 	}
 
-	
+	public void userMove(char playerMark) {
+		Scanner sc1 = new Scanner(System.in);
+		System.out.println("Choose number to place Mark");
+		int moveNumber = sc1.nextInt();
+		Board[moveNumber] = playerMark;
+		
+	}
 
 
 }
