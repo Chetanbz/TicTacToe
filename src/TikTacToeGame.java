@@ -11,14 +11,23 @@ public class TikTacToeGame {
 		TikTacToeGame Game = new TikTacToeGame();
 		tossNumber = toss();
 		Game.chooseMark();
-		System.out.println(Game.showBoard());
-		if (tossNumber ==0) {
-			Game.computerMove();
-			System.out.println(Game.showBoard());
-		}
-		else {
-			Game.userMove();
-			System.out.println(Game.showBoard());
+		while(!checkBoardFull()) {
+			//System.out.println(Game.showBoard());
+			if (tossNumber ==0) {
+				Game.computerMove();
+				System.out.println(Game.showBoard());
+				tossNumber = 1;
+			}
+			else {
+				Game.userMove();
+				System.out.println(Game.showBoard());
+				tossNumber = 0;
+			}
+			if (Game.winnerCondition() == true) {
+				System.out.println("Winning turn ");
+				
+			}
+	
 		}
 	}
 	
@@ -82,6 +91,26 @@ public class TikTacToeGame {
 				break;
 			}
 		}
+	}
+	public static boolean checkBoardFull() {
+		for(int i =0; i<Board.length; i++) {
+			String position = String.valueOf(Board[i]); 
+			if (!(position.equals("X") || position.equals("O"))) {  // check for empty space & loop breaks
+				return false;
+			}
+		}
+		return true;
+		
+	}
+	public boolean winnerCondition() { 
+		boolean conditionHorizontal = ((Board[1] == Board[4] && Board[1]==Board[7]) || (Board[1] == Board[2] && Board[1]==Board[3]) || (Board[7] == Board[8] && Board[7]==Board[9]) || (Board[3] == Board[6] && Board[3]==Board[9]));
+	    boolean conditionDiagonal   = ((Board[1] == Board[5] && Board[1]==Board[9]) && (Board[3] == Board[5] && Board[5]==Board[7]));
+	    if (conditionHorizontal == true || conditionDiagonal == true) {
+	    	return true;
+	    }
+	    else {
+	    	return false;
+	    }
 	}
 
 }
